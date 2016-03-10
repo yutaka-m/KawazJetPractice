@@ -34,8 +34,12 @@ bool MainScene::init()
     
     //object
     auto winSize = Director::getInstance()->getWinSize();
-    auto sprite = Sprite::create()("box.png");
-    auto physicsBody = PhysicsBody::create(sprite->get);
+    auto sprite = Sprite::create("coin.png");
+    auto physicsBody = PhysicsBody::createBox(sprite->getContentSize());
+    sprite->setPhysicsBody(physicsBody);
+    sprite->setPosition(Vec2(winSize.width /2.0 , winSize.height));
+    this->addChild(sprite);
+    
     
     this->scheduleUpdate();
     return true;
